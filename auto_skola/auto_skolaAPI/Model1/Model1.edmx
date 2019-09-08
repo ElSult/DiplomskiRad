@@ -1,0 +1,3005 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="auto_skolaModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Izbor">
+          <Key>
+            <PropertyRef Name="IzborId" />
+          </Key>
+          <Property Name="IzborId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Slika" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Kandidati">
+          <Key>
+            <PropertyRef Name="KandidatId" />
+          </Key>
+          <Property Name="KandidatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="DatumRegistracije" Type="datetime" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="50" />
+          <Property Name="KorisnickoIme" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LozinkaHash" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="LozinkaSalt" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="DatumRodjenja" Type="date" Nullable="false" />
+          <Property Name="SpolId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategorija">
+          <Key>
+            <PropertyRef Name="KategorijaId" />
+          </Key>
+          <Property Name="KategorijaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="KorisnikId" />
+          </Key>
+          <Property Name="KorisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="50" />
+          <Property Name="KorisnickoIme" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LozinkaHash" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="LozinkaSalt" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="DatumPrijave" Type="datetime" />
+          <Property Name="Slika" Type="varbinary(max)" />
+          <Property Name="SlikaThumb" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="KorisniciUloge">
+          <Key>
+            <PropertyRef Name="KorisniciUlogeId" />
+          </Key>
+          <Property Name="KorisniciUlogeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatumIzmjene" Type="date" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="UlogaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NacinPlacanja">
+          <Key>
+            <PropertyRef Name="NacinPlacanjaId" />
+          </Key>
+          <Property Name="NacinPlacanjaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nacin" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocjene">
+          <Key>
+            <PropertyRef Name="OcjenaId" />
+          </Key>
+          <Property Name="OcjenaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="KandidatId" Type="int" Nullable="false" />
+          <Property Name="Ocjena" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Odgovor">
+          <Key>
+            <PropertyRef Name="OdgovorId" />
+          </Key>
+          <Property Name="OdgovorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Odgovor" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsTacan" Type="bit" />
+          <Property Name="PitanjeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OznaceniOdgovori">
+          <Key>
+            <PropertyRef Name="OznacenOdgovorId" />
+          </Key>
+          <Property Name="OznacenOdgovorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PolazeId" Type="int" Nullable="false" />
+          <Property Name="PitanjeId" Type="int" Nullable="false" />
+          <Property Name="OdgovorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pitanje">
+          <Key>
+            <PropertyRef Name="PitanjeId" />
+          </Key>
+          <Property Name="PitanjeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pitanje" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Slika" Type="varbinary(max)" />
+          <Property Name="TipPitanjaId" Type="int" Nullable="false" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="SlikaThumb" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Podkategorija">
+          <Key>
+            <PropertyRef Name="PodkategorijaId" />
+          </Key>
+          <Property Name="PodkategorijaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="KategorijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Polaze">
+          <Key>
+            <PropertyRef Name="PolazeId" />
+          </Key>
+          <Property Name="PolazeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VrijemePocetka" Type="datetime" Nullable="false" />
+          <Property Name="VrijemeZavrsetka" Type="datetime" />
+          <Property Name="RezultatId" Type="int" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="KandidatId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezultat">
+          <Key>
+            <PropertyRef Name="RezultatId" />
+          </Key>
+          <Property Name="RezultatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrojacTacnihOdgovora" Type="int" Nullable="false" />
+          <Property Name="Rezultat" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spol">
+          <Key>
+            <PropertyRef Name="SpolId" />
+          </Key>
+          <Property Name="SpolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Termin">
+          <Key>
+            <PropertyRef Name="TerminId" />
+          </Key>
+          <Property Name="TerminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="date" Nullable="false" />
+          <Property Name="Vrijeme" Type="time" Precision="7" Nullable="false" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="VoziloId" Type="int" Nullable="false" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="50" />
+          <Property Name="KandidatId" Type="int" Nullable="false" />
+          <Property Name="IsOdrzan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PodkategorijaId" Type="int" Nullable="false" />
+          <Property Name="ParcijalnoBodovanje" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipPitanja">
+          <Key>
+            <PropertyRef Name="TipPitanjaId" />
+          </Key>
+          <Property Name="TipPitanjaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Uloge">
+          <Key>
+            <PropertyRef Name="UlogaId" />
+          </Key>
+          <Property Name="UlogaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Upisuje">
+          <Key>
+            <PropertyRef Name="UpisujeId" />
+          </Key>
+          <Property Name="UpisujeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatumUpisa" Type="date" Nullable="false" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="UplataId" Type="int" />
+          <Property Name="KandidatId" Type="int" Nullable="false" />
+          <Property Name="BrojUplacenihCasova" Type="int" />
+        </EntityType>
+        <EntityType Name="Uplata">
+          <Key>
+            <PropertyRef Name="UplataId" />
+          </Key>
+          <Property Name="UplataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cijena" Type="float" Nullable="false" />
+          <Property Name="NacinPlacanjaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vozilo">
+          <Key>
+            <PropertyRef Name="VoziloId" />
+          </Key>
+          <Property Name="VoziloId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Ocjene__Kandidat__36470DEF">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Ocjene" Type="Self.Ocjene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Ocjene">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ocjene__Korisnik__3552E9B6">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Ocjene" Type="Self.Ocjene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="Ocjene">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kategorija">
+          <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
+          <End Role="Podkategorija" Type="Self.Podkategorija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorija">
+              <PropertyRef Name="KategorijaId" />
+            </Principal>
+            <Dependent Role="Podkategorija">
+              <PropertyRef Name="KategorijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisniciUloge_Korisnici">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="KorisniciUloge" Type="Self.KorisniciUloge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="KorisniciUloge">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisniciUloge_Uloge">
+          <End Role="Uloge" Type="Self.Uloge" Multiplicity="1" />
+          <End Role="KorisniciUloge" Type="Self.KorisniciUloge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloge">
+              <PropertyRef Name="UlogaId" />
+            </Principal>
+            <Dependent Role="KorisniciUloge">
+              <PropertyRef Name="UlogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odgovor_Pitanje">
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="1" />
+          <End Role="Odgovor" Type="Self.Odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pitanje">
+              <PropertyRef Name="PitanjeId" />
+            </Principal>
+            <Dependent Role="Odgovor">
+              <PropertyRef Name="PitanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OznaceniOdgovori_Odgovor">
+          <End Role="Odgovor" Type="Self.Odgovor" Multiplicity="1" />
+          <End Role="OznaceniOdgovori" Type="Self.OznaceniOdgovori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odgovor">
+              <PropertyRef Name="OdgovorId" />
+            </Principal>
+            <Dependent Role="OznaceniOdgovori">
+              <PropertyRef Name="OdgovorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OznaceniOdgovori_Pitanje">
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="1" />
+          <End Role="OznaceniOdgovori" Type="Self.OznaceniOdgovori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pitanje">
+              <PropertyRef Name="PitanjeId" />
+            </Principal>
+            <Dependent Role="OznaceniOdgovori">
+              <PropertyRef Name="PitanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OznaceniOdgovori_Polaze">
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="1" />
+          <End Role="OznaceniOdgovori" Type="Self.OznaceniOdgovori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polaze">
+              <PropertyRef Name="PolazeId" />
+            </Principal>
+            <Dependent Role="OznaceniOdgovori">
+              <PropertyRef Name="PolazeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="TestId" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_TipPitanja">
+          <End Role="TipPitanja" Type="Self.TipPitanja" Multiplicity="1" />
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipPitanja">
+              <PropertyRef Name="TipPitanjaId" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="TipPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Podkategorija">
+          <End Role="Podkategorija" Type="Self.Podkategorija" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podkategorija">
+              <PropertyRef Name="PodkategorijaId" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="PodkategorijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polaze_Kandidati">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Polaze">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polaze_Rezultat">
+          <End Role="Rezultat" Type="Self.Rezultat" Multiplicity="0..1" />
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezultat">
+              <PropertyRef Name="RezultatId" />
+            </Principal>
+            <Dependent Role="Polaze">
+              <PropertyRef Name="RezultatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polaze_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="TestId" />
+            </Principal>
+            <Dependent Role="Polaze">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Spol">
+          <End Role="Spol" Type="Self.Spol" Multiplicity="1" />
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spol">
+              <PropertyRef Name="SpolId" />
+            </Principal>
+            <Dependent Role="Kandidati">
+              <PropertyRef Name="SpolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Kandidati">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Korisnik">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Vozilo">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="VoziloId" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="VoziloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upis_Korisnik">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Upisuje" Type="Self.Upisuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="Upisuje">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upis_Uplata">
+          <End Role="Uplata" Type="Self.Uplata" Multiplicity="0..1" />
+          <End Role="Upisuje" Type="Self.Upisuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uplata">
+              <PropertyRef Name="UplataId" />
+            </Principal>
+            <Dependent Role="Upisuje">
+              <PropertyRef Name="UplataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upisuje_Kandidati">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Upisuje" Type="Self.Upisuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Upisuje">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uplata_NacinPlacanja">
+          <End Role="NacinPlacanja" Type="Self.NacinPlacanja" Multiplicity="1" />
+          <End Role="Uplata" Type="Self.Uplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NacinPlacanja">
+              <PropertyRef Name="NacinPlacanjaId" />
+            </Principal>
+            <Dependent Role="Uplata">
+              <PropertyRef Name="NacinPlacanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="asp_Instruktori_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Izbor_GetIzborById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IzborId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Izbor_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Kandidati_GetBrojNovihKandidata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Kandidati_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Kandidati_GetByUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Kandidati_SearchByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Kandidati_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Kandidati_SpojenoImePrezime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Kategorija_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KategorijaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Kategorija_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Korisnici_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Korisnici_GetByUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Korisnici_GetRecommendedInstruktori" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Korisnici_GetSlicnePoKandidatu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SpolId" Type="int" Mode="In" />
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+          <Parameter Name="DatumRodjenja" Type="date" Mode="In" />
+        </Function>
+        <Function Name="asp_Korisnici_SearchByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Korisnici_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Korisnici_SpojenoImePrezime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Ocjene_DaLiPostojiOcjena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KandidatId" Type="int" Mode="In" />
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Ocjene_GetRejtingByKorisnikId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Odgovor_DaLiPostojiOdgovor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PitanjeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Odgovor_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OdgovorId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Odgovor_GetOdgovoriByPitanjeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PitanjeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Odgovor_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_OznaceniOdgovori_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OznacenOdgovorId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PolazeId" Type="int" Mode="In" />
+          <Parameter Name="PitanjeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_OznaceniOdgovori_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Pitanje_GetBrojPitanjaPoTestu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TestId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Pitanje_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PitanjeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Pitanje_GetPitanjaByTestID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TestId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Pitanje_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Podkategorija_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PodkategorijaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Podkategorija_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Podkategorije_GetByKategorijaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KategorijaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Polaze_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PolazeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Polaze_GetPolazeByKandidatId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KandidatId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Polaze_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_provjera_nacina_placanja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kandidatId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Provjera_Uplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kandidatId" Type="int" Mode="In" />
+          <Parameter Name="uplataId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_report" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Od" Type="date" Mode="In" />
+          <Parameter Name="Do" Type="date" Mode="In" />
+          <Parameter Name="TestId" Type="int" Mode="In" />
+          <Parameter Name="KandidatId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Rezultat_GetRezultatiTestovaReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrojDana" Type="int" Mode="In" />
+          <Parameter Name="TestId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Spol_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Termin_DaLiJeSlobodanTermin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminDate" Type="date" Mode="In" />
+          <Parameter Name="TerminTime" Type="time" Mode="In" />
+          <Parameter Name="VoziloId" Type="int" Mode="In" />
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+          <Parameter Name="KandidatId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Termin_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Termin_GetByKandidatId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KandidatId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Termin_SearchByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ImePrezime" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Termin_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Test_DaLiPostojiTestSaPodkategorijom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="varchar" Mode="In" />
+          <Parameter Name="PodkategorijaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Test_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TestId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Test_GetByIzborNaziv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Test_GetTestByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nazivTesta" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="asp_Test_GetTestId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="varchar" Mode="In" />
+          <Parameter Name="PodkategorijaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Test_NazivPodkategorija" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Test_Select_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Testovi_GetRecommendedByKandidatId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KandidatId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Testovi_GetTestoviByPodkategorijaID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PodkategorijaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_TipPitanja_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipPitanjaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_TipPitanja_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Uloge_GetUlogeByKorisnikId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Uloge_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Upisuje_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UpisujeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Upisuje_SearchByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ImePrezime" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="asp_upisuje_SellectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Uplata_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UplataId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Uplate_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Vozilo_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VoziloId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="asp_Vozilo_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="auto_skolaModel1StoreContainer">
+          <EntitySet Name="Izbor" EntityType="Self.Izbor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kandidati" EntityType="Self.Kandidati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorija" EntityType="Self.Kategorija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KorisniciUloge" EntityType="Self.KorisniciUloge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NacinPlacanja" EntityType="Self.NacinPlacanja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocjene" EntityType="Self.Ocjene" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odgovor" EntityType="Self.Odgovor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OznaceniOdgovori" EntityType="Self.OznaceniOdgovori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pitanje" EntityType="Self.Pitanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podkategorija" EntityType="Self.Podkategorija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polaze" EntityType="Self.Polaze" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezultat" EntityType="Self.Rezultat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spol" EntityType="Self.Spol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Termin" EntityType="Self.Termin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipPitanja" EntityType="Self.TipPitanja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uloge" EntityType="Self.Uloge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Upisuje" EntityType="Self.Upisuje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uplata" EntityType="Self.Uplata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vozilo" EntityType="Self.Vozilo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Ocjene__Kandidat__36470DEF" Association="Self.FK__Ocjene__Kandidat__36470DEF">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Ocjene" EntitySet="Ocjene" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ocjene__Korisnik__3552E9B6" Association="Self.FK__Ocjene__Korisnik__3552E9B6">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Ocjene" EntitySet="Ocjene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kategorija" Association="Self.FK_Kategorija">
+            <End Role="Kategorija" EntitySet="Kategorija" />
+            <End Role="Podkategorija" EntitySet="Podkategorija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisniciUloge_Korisnici" Association="Self.FK_KorisniciUloge_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="KorisniciUloge" EntitySet="KorisniciUloge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisniciUloge_Uloge" Association="Self.FK_KorisniciUloge_Uloge">
+            <End Role="Uloge" EntitySet="Uloge" />
+            <End Role="KorisniciUloge" EntitySet="KorisniciUloge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odgovor_Pitanje" Association="Self.FK_Odgovor_Pitanje">
+            <End Role="Pitanje" EntitySet="Pitanje" />
+            <End Role="Odgovor" EntitySet="Odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OznaceniOdgovori_Odgovor" Association="Self.FK_OznaceniOdgovori_Odgovor">
+            <End Role="Odgovor" EntitySet="Odgovor" />
+            <End Role="OznaceniOdgovori" EntitySet="OznaceniOdgovori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OznaceniOdgovori_Pitanje" Association="Self.FK_OznaceniOdgovori_Pitanje">
+            <End Role="Pitanje" EntitySet="Pitanje" />
+            <End Role="OznaceniOdgovori" EntitySet="OznaceniOdgovori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OznaceniOdgovori_Polaze" Association="Self.FK_OznaceniOdgovori_Polaze">
+            <End Role="Polaze" EntitySet="Polaze" />
+            <End Role="OznaceniOdgovori" EntitySet="OznaceniOdgovori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_Test" Association="Self.FK_Pitanje_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Pitanje" EntitySet="Pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_TipPitanja" Association="Self.FK_Pitanje_TipPitanja">
+            <End Role="TipPitanja" EntitySet="TipPitanja" />
+            <End Role="Pitanje" EntitySet="Pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Podkategorija" Association="Self.FK_Podkategorija">
+            <End Role="Podkategorija" EntitySet="Podkategorija" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polaze_Kandidati" Association="Self.FK_Polaze_Kandidati">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Polaze" EntitySet="Polaze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polaze_Rezultat" Association="Self.FK_Polaze_Rezultat">
+            <End Role="Rezultat" EntitySet="Rezultat" />
+            <End Role="Polaze" EntitySet="Polaze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polaze_Test" Association="Self.FK_Polaze_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Polaze" EntitySet="Polaze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Spol" Association="Self.FK_Spol">
+            <End Role="Spol" EntitySet="Spol" />
+            <End Role="Kandidati" EntitySet="Kandidati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Kandidati" Association="Self.FK_Termin_Kandidati">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Korisnik" Association="Self.FK_Termin_Korisnik">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Vozilo" Association="Self.FK_Termin_Vozilo">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upis_Korisnik" Association="Self.FK_Upis_Korisnik">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Upisuje" EntitySet="Upisuje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upis_Uplata" Association="Self.FK_Upis_Uplata">
+            <End Role="Uplata" EntitySet="Uplata" />
+            <End Role="Upisuje" EntitySet="Upisuje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upisuje_Kandidati" Association="Self.FK_Upisuje_Kandidati">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Upisuje" EntitySet="Upisuje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uplata_NacinPlacanja" Association="Self.FK_Uplata_NacinPlacanja">
+            <End Role="NacinPlacanja" EntitySet="NacinPlacanja" />
+            <End Role="Uplata" EntitySet="Uplata" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="auto_skolaModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Izbor">
+          <Key>
+            <PropertyRef Name="IzborId" />
+          </Key>
+          <Property Name="IzborId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Kandidati">
+          <Key>
+            <PropertyRef Name="KandidatId" />
+          </Key>
+          <Property Name="KandidatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatumRegistracije" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Napomena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KorisnickoIme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LozinkaHash" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LozinkaSalt" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SpolId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ocjene" Relationship="Self.FK__Ocjene__Kandidat__36470DEF" FromRole="Kandidati" ToRole="Ocjene" />
+          <NavigationProperty Name="Polaze" Relationship="Self.FK_Polaze_Kandidati" FromRole="Kandidati" ToRole="Polaze" />
+          <NavigationProperty Name="Spol" Relationship="Self.FK_Spol" FromRole="Kandidati" ToRole="Spol" />
+          <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_Kandidati" FromRole="Kandidati" ToRole="Termin" />
+          <NavigationProperty Name="Upisuje" Relationship="Self.FK_Upisuje_Kandidati" FromRole="Kandidati" ToRole="Upisuje" />
+        </EntityType>
+        <EntityType Name="Kategorija">
+          <Key>
+            <PropertyRef Name="KategorijaId" />
+          </Key>
+          <Property Name="KategorijaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Podkategorija" Relationship="Self.FK_Kategorija" FromRole="Kategorija" ToRole="Podkategorija" />
+        </EntityType>
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="KorisnikId" />
+          </Key>
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Napomena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KorisnickoIme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LozinkaHash" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LozinkaSalt" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="DatumPrijave" Type="DateTime" Precision="3" />
+          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SlikaThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Ocjene" Relationship="Self.FK__Ocjene__Korisnik__3552E9B6" FromRole="Korisnici" ToRole="Ocjene" />
+          <NavigationProperty Name="KorisniciUloge" Relationship="Self.FK_KorisniciUloge_Korisnici" FromRole="Korisnici" ToRole="KorisniciUloge" />
+          <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_Korisnik" FromRole="Korisnici" ToRole="Termin" />
+          <NavigationProperty Name="Upisuje" Relationship="Self.FK_Upis_Korisnik" FromRole="Korisnici" ToRole="Upisuje" />
+        </EntityType>
+        <EntityType Name="KorisniciUloge">
+          <Key>
+            <PropertyRef Name="KorisniciUlogeId" />
+          </Key>
+          <Property Name="KorisniciUlogeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatumIzmjene" Type="DateTime" Precision="0" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="UlogaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_KorisniciUloge_Korisnici" FromRole="KorisniciUloge" ToRole="Korisnici" />
+          <NavigationProperty Name="Uloge" Relationship="Self.FK_KorisniciUloge_Uloge" FromRole="KorisniciUloge" ToRole="Uloge" />
+        </EntityType>
+        <EntityType Name="NacinPlacanja">
+          <Key>
+            <PropertyRef Name="NacinPlacanjaId" />
+          </Key>
+          <Property Name="NacinPlacanjaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nacin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Uplata" Relationship="Self.FK_Uplata_NacinPlacanja" FromRole="NacinPlacanja" ToRole="Uplata" />
+        </EntityType>
+        <EntityType Name="Ocjene">
+          <Key>
+            <PropertyRef Name="OcjenaId" />
+          </Key>
+          <Property Name="OcjenaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="KandidatId" Type="Int32" Nullable="false" />
+          <Property Name="Ocjena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kandidati" Relationship="Self.FK__Ocjene__Kandidat__36470DEF" FromRole="Ocjene" ToRole="Kandidati" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK__Ocjene__Korisnik__3552E9B6" FromRole="Ocjene" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="Odgovor">
+          <Key>
+            <PropertyRef Name="OdgovorId" />
+          </Key>
+          <Property Name="OdgovorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Odgovor1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsTacan" Type="Boolean" />
+          <Property Name="PitanjeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pitanje" Relationship="Self.FK_Odgovor_Pitanje" FromRole="Odgovor" ToRole="Pitanje" />
+          <NavigationProperty Name="OznaceniOdgovori" Relationship="Self.FK_OznaceniOdgovori_Odgovor" FromRole="Odgovor" ToRole="OznaceniOdgovori" />
+        </EntityType>
+        <EntityType Name="OznaceniOdgovori">
+          <Key>
+            <PropertyRef Name="OznacenOdgovorId" />
+          </Key>
+          <Property Name="OznacenOdgovorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PolazeId" Type="Int32" Nullable="false" />
+          <Property Name="PitanjeId" Type="Int32" Nullable="false" />
+          <Property Name="OdgovorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Odgovor" Relationship="Self.FK_OznaceniOdgovori_Odgovor" FromRole="OznaceniOdgovori" ToRole="Odgovor" />
+          <NavigationProperty Name="Pitanje" Relationship="Self.FK_OznaceniOdgovori_Pitanje" FromRole="OznaceniOdgovori" ToRole="Pitanje" />
+          <NavigationProperty Name="Polaze" Relationship="Self.FK_OznaceniOdgovori_Polaze" FromRole="OznaceniOdgovori" ToRole="Polaze" />
+        </EntityType>
+        <EntityType Name="Pitanje">
+          <Key>
+            <PropertyRef Name="PitanjeId" />
+          </Key>
+          <Property Name="PitanjeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pitanje1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TipPitanjaId" Type="Int32" Nullable="false" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <Property Name="SlikaThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Odgovor" Relationship="Self.FK_Odgovor_Pitanje" FromRole="Pitanje" ToRole="Odgovor" />
+          <NavigationProperty Name="OznaceniOdgovori" Relationship="Self.FK_OznaceniOdgovori_Pitanje" FromRole="Pitanje" ToRole="OznaceniOdgovori" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Pitanje_Test" FromRole="Pitanje" ToRole="Test" />
+          <NavigationProperty Name="TipPitanja" Relationship="Self.FK_Pitanje_TipPitanja" FromRole="Pitanje" ToRole="TipPitanja" />
+        </EntityType>
+        <EntityType Name="Podkategorija">
+          <Key>
+            <PropertyRef Name="PodkategorijaId" />
+          </Key>
+          <Property Name="PodkategorijaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KategorijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorija" Relationship="Self.FK_Kategorija" FromRole="Podkategorija" ToRole="Kategorija" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Podkategorija" FromRole="Podkategorija" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Polaze">
+          <Key>
+            <PropertyRef Name="PolazeId" />
+          </Key>
+          <Property Name="PolazeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VrijemePocetka" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VrijemeZavrsetka" Type="DateTime" Precision="3" />
+          <Property Name="RezultatId" Type="Int32" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <Property Name="KandidatId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kandidati" Relationship="Self.FK_Polaze_Kandidati" FromRole="Polaze" ToRole="Kandidati" />
+          <NavigationProperty Name="OznaceniOdgovori" Relationship="Self.FK_OznaceniOdgovori_Polaze" FromRole="Polaze" ToRole="OznaceniOdgovori" />
+          <NavigationProperty Name="Rezultat" Relationship="Self.FK_Polaze_Rezultat" FromRole="Polaze" ToRole="Rezultat" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Polaze_Test" FromRole="Polaze" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Rezultat">
+          <Key>
+            <PropertyRef Name="RezultatId" />
+          </Key>
+          <Property Name="RezultatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojacTacnihOdgovora" Type="Int32" Nullable="false" />
+          <Property Name="Rezultat1" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Polaze" Relationship="Self.FK_Polaze_Rezultat" FromRole="Rezultat" ToRole="Polaze" />
+        </EntityType>
+        <EntityType Name="Spol">
+          <Key>
+            <PropertyRef Name="SpolId" />
+          </Key>
+          <Property Name="SpolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Kandidati" Relationship="Self.FK_Spol" FromRole="Spol" ToRole="Kandidati" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Termin">
+          <Key>
+            <PropertyRef Name="TerminId" />
+          </Key>
+          <Property Name="TerminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vrijeme" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="VoziloId" Type="Int32" Nullable="false" />
+          <Property Name="Napomena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KandidatId" Type="Int32" Nullable="false" />
+          <Property Name="IsOdrzan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Kandidati" Relationship="Self.FK_Termin_Kandidati" FromRole="Termin" ToRole="Kandidati" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Termin_Korisnik" FromRole="Termin" ToRole="Korisnici" />
+          <NavigationProperty Name="Vozilo" Relationship="Self.FK_Termin_Vozilo" FromRole="Termin" ToRole="Vozilo" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodkategorijaId" Type="Int32" Nullable="false" />
+          <Property Name="ParcijalnoBodovanje" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pitanje" Relationship="Self.FK_Pitanje_Test" FromRole="Test" ToRole="Pitanje" />
+          <NavigationProperty Name="Podkategorija" Relationship="Self.FK_Podkategorija" FromRole="Test" ToRole="Podkategorija" />
+          <NavigationProperty Name="Polaze" Relationship="Self.FK_Polaze_Test" FromRole="Test" ToRole="Polaze" />
+        </EntityType>
+        <EntityType Name="TipPitanja">
+          <Key>
+            <PropertyRef Name="TipPitanjaId" />
+          </Key>
+          <Property Name="TipPitanjaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pitanje" Relationship="Self.FK_Pitanje_TipPitanja" FromRole="TipPitanja" ToRole="Pitanje" />
+        </EntityType>
+        <EntityType Name="Uloge">
+          <Key>
+            <PropertyRef Name="UlogaId" />
+          </Key>
+          <Property Name="UlogaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KorisniciUloge" Relationship="Self.FK_KorisniciUloge_Uloge" FromRole="Uloge" ToRole="KorisniciUloge" />
+        </EntityType>
+        <EntityType Name="Upisuje">
+          <Key>
+            <PropertyRef Name="UpisujeId" />
+          </Key>
+          <Property Name="UpisujeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatumUpisa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="UplataId" Type="Int32" />
+          <Property Name="KandidatId" Type="Int32" Nullable="false" />
+          <Property Name="BrojUplacenihCasova" Type="Int32" />
+          <NavigationProperty Name="Kandidati" Relationship="Self.FK_Upisuje_Kandidati" FromRole="Upisuje" ToRole="Kandidati" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Upis_Korisnik" FromRole="Upisuje" ToRole="Korisnici" />
+          <NavigationProperty Name="Uplata" Relationship="Self.FK_Upis_Uplata" FromRole="Upisuje" ToRole="Uplata" />
+        </EntityType>
+        <EntityType Name="Uplata">
+          <Key>
+            <PropertyRef Name="UplataId" />
+          </Key>
+          <Property Name="UplataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cijena" Type="Double" Nullable="false" />
+          <Property Name="NacinPlacanjaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NacinPlacanja" Relationship="Self.FK_Uplata_NacinPlacanja" FromRole="Uplata" ToRole="NacinPlacanja" />
+          <NavigationProperty Name="Upisuje" Relationship="Self.FK_Upis_Uplata" FromRole="Uplata" ToRole="Upisuje" />
+        </EntityType>
+        <EntityType Name="Vozilo">
+          <Key>
+            <PropertyRef Name="VoziloId" />
+          </Key>
+          <Property Name="VoziloId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_Vozilo" FromRole="Vozilo" ToRole="Termin" />
+        </EntityType>
+        <Association Name="FK__Ocjene__Kandidat__36470DEF">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Ocjene" Type="Self.Ocjene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Ocjene">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polaze_Kandidati">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Polaze">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Spol">
+          <End Role="Spol" Type="Self.Spol" Multiplicity="1" />
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spol">
+              <PropertyRef Name="SpolId" />
+            </Principal>
+            <Dependent Role="Kandidati">
+              <PropertyRef Name="SpolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Kandidati">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upisuje_Kandidati">
+          <End Role="Kandidati" Type="Self.Kandidati" Multiplicity="1" />
+          <End Role="Upisuje" Type="Self.Upisuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kandidati">
+              <PropertyRef Name="KandidatId" />
+            </Principal>
+            <Dependent Role="Upisuje">
+              <PropertyRef Name="KandidatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kategorija">
+          <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
+          <End Role="Podkategorija" Type="Self.Podkategorija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorija">
+              <PropertyRef Name="KategorijaId" />
+            </Principal>
+            <Dependent Role="Podkategorija">
+              <PropertyRef Name="KategorijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ocjene__Korisnik__3552E9B6">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Ocjene" Type="Self.Ocjene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="Ocjene">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisniciUloge_Korisnici">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="KorisniciUloge" Type="Self.KorisniciUloge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="KorisniciUloge">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Korisnik">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upis_Korisnik">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Upisuje" Type="Self.Upisuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="KorisnikId" />
+            </Principal>
+            <Dependent Role="Upisuje">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisniciUloge_Uloge">
+          <End Role="Uloge" Type="Self.Uloge" Multiplicity="1" />
+          <End Role="KorisniciUloge" Type="Self.KorisniciUloge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloge">
+              <PropertyRef Name="UlogaId" />
+            </Principal>
+            <Dependent Role="KorisniciUloge">
+              <PropertyRef Name="UlogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uplata_NacinPlacanja">
+          <End Role="NacinPlacanja" Type="Self.NacinPlacanja" Multiplicity="1" />
+          <End Role="Uplata" Type="Self.Uplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NacinPlacanja">
+              <PropertyRef Name="NacinPlacanjaId" />
+            </Principal>
+            <Dependent Role="Uplata">
+              <PropertyRef Name="NacinPlacanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odgovor_Pitanje">
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="1" />
+          <End Role="Odgovor" Type="Self.Odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pitanje">
+              <PropertyRef Name="PitanjeId" />
+            </Principal>
+            <Dependent Role="Odgovor">
+              <PropertyRef Name="PitanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OznaceniOdgovori_Odgovor">
+          <End Role="Odgovor" Type="Self.Odgovor" Multiplicity="1" />
+          <End Role="OznaceniOdgovori" Type="Self.OznaceniOdgovori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odgovor">
+              <PropertyRef Name="OdgovorId" />
+            </Principal>
+            <Dependent Role="OznaceniOdgovori">
+              <PropertyRef Name="OdgovorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OznaceniOdgovori_Pitanje">
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="1" />
+          <End Role="OznaceniOdgovori" Type="Self.OznaceniOdgovori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pitanje">
+              <PropertyRef Name="PitanjeId" />
+            </Principal>
+            <Dependent Role="OznaceniOdgovori">
+              <PropertyRef Name="PitanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OznaceniOdgovori_Polaze">
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="1" />
+          <End Role="OznaceniOdgovori" Type="Self.OznaceniOdgovori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polaze">
+              <PropertyRef Name="PolazeId" />
+            </Principal>
+            <Dependent Role="OznaceniOdgovori">
+              <PropertyRef Name="PolazeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="TestId" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_TipPitanja">
+          <End Role="TipPitanja" Type="Self.TipPitanja" Multiplicity="1" />
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipPitanja">
+              <PropertyRef Name="TipPitanjaId" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="TipPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Podkategorija">
+          <End Role="Podkategorija" Type="Self.Podkategorija" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podkategorija">
+              <PropertyRef Name="PodkategorijaId" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="PodkategorijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polaze_Rezultat">
+          <End Role="Rezultat" Type="Self.Rezultat" Multiplicity="0..1" />
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezultat">
+              <PropertyRef Name="RezultatId" />
+            </Principal>
+            <Dependent Role="Polaze">
+              <PropertyRef Name="RezultatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polaze_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Polaze" Type="Self.Polaze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="TestId" />
+            </Principal>
+            <Dependent Role="Polaze">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Vozilo">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="VoziloId" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="VoziloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upis_Uplata">
+          <End Role="Uplata" Type="Self.Uplata" Multiplicity="0..1" />
+          <End Role="Upisuje" Type="Self.Upisuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uplata">
+              <PropertyRef Name="UplataId" />
+            </Principal>
+            <Dependent Role="Upisuje">
+              <PropertyRef Name="UplataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="auto_skolaEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Izbor" EntityType="Self.Izbor" />
+          <EntitySet Name="Kandidati" EntityType="Self.Kandidati" />
+          <EntitySet Name="Kategorija" EntityType="Self.Kategorija" />
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" />
+          <EntitySet Name="KorisniciUloge" EntityType="Self.KorisniciUloge" />
+          <EntitySet Name="NacinPlacanja" EntityType="Self.NacinPlacanja" />
+          <EntitySet Name="Ocjene" EntityType="Self.Ocjene" />
+          <EntitySet Name="Odgovor" EntityType="Self.Odgovor" />
+          <EntitySet Name="OznaceniOdgovori" EntityType="Self.OznaceniOdgovori" />
+          <EntitySet Name="Pitanje" EntityType="Self.Pitanje" />
+          <EntitySet Name="Podkategorija" EntityType="Self.Podkategorija" />
+          <EntitySet Name="Polaze" EntityType="Self.Polaze" />
+          <EntitySet Name="Rezultat" EntityType="Self.Rezultat" />
+          <EntitySet Name="Spol" EntityType="Self.Spol" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Termin" EntityType="Self.Termin" />
+          <EntitySet Name="Test" EntityType="Self.Test" />
+          <EntitySet Name="TipPitanja" EntityType="Self.TipPitanja" />
+          <EntitySet Name="Uloge" EntityType="Self.Uloge" />
+          <EntitySet Name="Upisuje" EntityType="Self.Upisuje" />
+          <EntitySet Name="Uplata" EntityType="Self.Uplata" />
+          <EntitySet Name="Vozilo" EntityType="Self.Vozilo" />
+          <AssociationSet Name="FK__Ocjene__Kandidat__36470DEF" Association="Self.FK__Ocjene__Kandidat__36470DEF">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Ocjene" EntitySet="Ocjene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polaze_Kandidati" Association="Self.FK_Polaze_Kandidati">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Polaze" EntitySet="Polaze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Spol" Association="Self.FK_Spol">
+            <End Role="Spol" EntitySet="Spol" />
+            <End Role="Kandidati" EntitySet="Kandidati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Kandidati" Association="Self.FK_Termin_Kandidati">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upisuje_Kandidati" Association="Self.FK_Upisuje_Kandidati">
+            <End Role="Kandidati" EntitySet="Kandidati" />
+            <End Role="Upisuje" EntitySet="Upisuje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kategorija" Association="Self.FK_Kategorija">
+            <End Role="Kategorija" EntitySet="Kategorija" />
+            <End Role="Podkategorija" EntitySet="Podkategorija" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ocjene__Korisnik__3552E9B6" Association="Self.FK__Ocjene__Korisnik__3552E9B6">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Ocjene" EntitySet="Ocjene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisniciUloge_Korisnici" Association="Self.FK_KorisniciUloge_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="KorisniciUloge" EntitySet="KorisniciUloge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Korisnik" Association="Self.FK_Termin_Korisnik">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upis_Korisnik" Association="Self.FK_Upis_Korisnik">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Upisuje" EntitySet="Upisuje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisniciUloge_Uloge" Association="Self.FK_KorisniciUloge_Uloge">
+            <End Role="Uloge" EntitySet="Uloge" />
+            <End Role="KorisniciUloge" EntitySet="KorisniciUloge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uplata_NacinPlacanja" Association="Self.FK_Uplata_NacinPlacanja">
+            <End Role="NacinPlacanja" EntitySet="NacinPlacanja" />
+            <End Role="Uplata" EntitySet="Uplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odgovor_Pitanje" Association="Self.FK_Odgovor_Pitanje">
+            <End Role="Pitanje" EntitySet="Pitanje" />
+            <End Role="Odgovor" EntitySet="Odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OznaceniOdgovori_Odgovor" Association="Self.FK_OznaceniOdgovori_Odgovor">
+            <End Role="Odgovor" EntitySet="Odgovor" />
+            <End Role="OznaceniOdgovori" EntitySet="OznaceniOdgovori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OznaceniOdgovori_Pitanje" Association="Self.FK_OznaceniOdgovori_Pitanje">
+            <End Role="Pitanje" EntitySet="Pitanje" />
+            <End Role="OznaceniOdgovori" EntitySet="OznaceniOdgovori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OznaceniOdgovori_Polaze" Association="Self.FK_OznaceniOdgovori_Polaze">
+            <End Role="Polaze" EntitySet="Polaze" />
+            <End Role="OznaceniOdgovori" EntitySet="OznaceniOdgovori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_Test" Association="Self.FK_Pitanje_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Pitanje" EntitySet="Pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_TipPitanja" Association="Self.FK_Pitanje_TipPitanja">
+            <End Role="TipPitanja" EntitySet="TipPitanja" />
+            <End Role="Pitanje" EntitySet="Pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Podkategorija" Association="Self.FK_Podkategorija">
+            <End Role="Podkategorija" EntitySet="Podkategorija" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polaze_Rezultat" Association="Self.FK_Polaze_Rezultat">
+            <End Role="Rezultat" EntitySet="Rezultat" />
+            <End Role="Polaze" EntitySet="Polaze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polaze_Test" Association="Self.FK_Polaze_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Polaze" EntitySet="Polaze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Vozilo" Association="Self.FK_Termin_Vozilo">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upis_Uplata" Association="Self.FK_Upis_Uplata">
+            <End Role="Uplata" EntitySet="Uplata" />
+            <End Role="Upisuje" EntitySet="Upisuje" />
+          </AssociationSet>
+          <FunctionImport Name="asp_Instruktori_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Instruktori_SelectAll_Result)" />
+          <FunctionImport Name="asp_Izbor_GetIzborById" ReturnType="Collection(auto_skolaModel1.asp_Izbor_GetIzborById_Result)">
+            <Parameter Name="IzborId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Izbor_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Izbor_SelectAll_Result)" />
+          <FunctionImport Name="asp_Kandidati_GetBrojNovihKandidata" ReturnType="Collection(Int32)">
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Kandidati_GetById" ReturnType="Collection(auto_skolaModel1.asp_Kandidati_GetById_Result)">
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Kandidati_GetByUsername" ReturnType="Collection(auto_skolaModel1.asp_Kandidati_GetByUsername_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Kandidati_SearchByName" ReturnType="Collection(auto_skolaModel1.asp_Kandidati_SearchByName_Result)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Kandidati_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Kandidati_SelectAll_Result)" />
+          <FunctionImport Name="asp_Kandidati_SpojenoImePrezime" ReturnType="Collection(auto_skolaModel1.asp_Kandidati_SpojenoImePrezime_Result)" />
+          <FunctionImport Name="asp_Kategorija_GetById" ReturnType="Collection(auto_skolaModel1.asp_Kategorija_GetById_Result)">
+            <Parameter Name="KategorijaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Kategorija_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Kategorija_SelectAll_Result)" />
+          <FunctionImport Name="asp_Korisnici_GetById" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_GetById_Result)">
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Korisnici_GetByUsername" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_GetByUsername_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Korisnici_GetRecommendedInstruktori" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_GetRecommendedInstruktori_Result)" />
+          <FunctionImport Name="asp_Korisnici_GetSlicnePoKandidatu" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_GetSlicnePoKandidatu_Result)">
+            <Parameter Name="SpolId" Mode="In" Type="Int32" />
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+            <Parameter Name="DatumRodjenja" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Korisnici_SearchByName" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_SearchByName_Result)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Korisnici_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_SelectAll_Result)" />
+          <FunctionImport Name="asp_Korisnici_SpojenoImePrezime" ReturnType="Collection(auto_skolaModel1.asp_Korisnici_SpojenoImePrezime_Result)" />
+          <FunctionImport Name="asp_Ocjene_DaLiPostojiOcjena" ReturnType="Collection(Int32)">
+            <Parameter Name="KandidatId" Mode="In" Type="Int32" />
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Ocjene_GetRejtingByKorisnikId" ReturnType="Collection(Decimal)">
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Odgovor_DaLiPostojiOdgovor" ReturnType="Collection(auto_skolaModel1.asp_Odgovor_DaLiPostojiOdgovor_Result)">
+            <Parameter Name="PitanjeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Odgovor_GetById" ReturnType="Collection(auto_skolaModel1.asp_Odgovor_GetById_Result)">
+            <Parameter Name="OdgovorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Odgovor_GetOdgovoriByPitanjeId" ReturnType="Collection(auto_skolaModel1.asp_Odgovor_GetOdgovoriByPitanjeId_Result)">
+            <Parameter Name="PitanjeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Odgovor_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Odgovor_SelectAll_Result)" />
+          <FunctionImport Name="asp_OznaceniOdgovori_GetById" ReturnType="Collection(auto_skolaModel1.asp_OznaceniOdgovori_GetById_Result)">
+            <Parameter Name="OznacenOdgovorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId" ReturnType="Collection(auto_skolaModel1.asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId_Result)">
+            <Parameter Name="PolazeId" Mode="In" Type="Int32" />
+            <Parameter Name="PitanjeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_OznaceniOdgovori_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_OznaceniOdgovori_SelectAll_Result)" />
+          <FunctionImport Name="asp_Pitanje_GetBrojPitanjaPoTestu" ReturnType="Collection(Int32)">
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Pitanje_GetById" ReturnType="Collection(auto_skolaModel1.asp_Pitanje_GetById_Result)">
+            <Parameter Name="PitanjeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Pitanje_GetPitanjaByTestID" ReturnType="Collection(auto_skolaModel1.asp_Pitanje_GetPitanjaByTestID_Result)">
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Pitanje_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Pitanje_SelectAll_Result)" />
+          <FunctionImport Name="asp_Podkategorija_GetById" ReturnType="Collection(auto_skolaModel1.asp_Podkategorija_GetById_Result)">
+            <Parameter Name="PodkategorijaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Podkategorija_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Podkategorija_SelectAll_Result)" />
+          <FunctionImport Name="asp_Podkategorije_GetByKategorijaId" ReturnType="Collection(auto_skolaModel1.asp_Podkategorije_GetByKategorijaId_Result)">
+            <Parameter Name="KategorijaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Polaze_GetById" ReturnType="Collection(auto_skolaModel1.asp_Polaze_GetById_Result)">
+            <Parameter Name="PolazeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Polaze_GetPolazeByKandidatId" ReturnType="Collection(auto_skolaModel1.asp_Polaze_GetPolazeByKandidatId_Result)">
+            <Parameter Name="KandidatId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Polaze_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Polaze_SelectAll_Result)" />
+          <FunctionImport Name="asp_provjera_nacina_placanja" ReturnType="Collection(auto_skolaModel1.asp_provjera_nacina_placanja_Result)">
+            <Parameter Name="kandidatId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Provjera_Uplate" ReturnType="Collection(auto_skolaModel1.asp_Provjera_Uplate_Result)">
+            <Parameter Name="kandidatId" Mode="In" Type="Int32" />
+            <Parameter Name="uplataId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_report" ReturnType="Collection(auto_skolaModel1.asp_report_Result)">
+            <Parameter Name="Od" Mode="In" Type="DateTime" />
+            <Parameter Name="Do" Mode="In" Type="DateTime" />
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+            <Parameter Name="KandidatId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Rezultat_GetRezultatiTestovaReport" ReturnType="Collection(auto_skolaModel1.asp_Rezultat_GetRezultatiTestovaReport_Result)">
+            <Parameter Name="BrojDana" Mode="In" Type="Int32" />
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Spol_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Spol_SelectAll_Result)" />
+          <FunctionImport Name="asp_Termin_DaLiJeSlobodanTermin" ReturnType="Collection(auto_skolaModel1.asp_Termin_DaLiJeSlobodanTermin_Result)">
+            <Parameter Name="TerminDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TerminTime" Mode="In" Type="Time" />
+            <Parameter Name="VoziloId" Mode="In" Type="Int32" />
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+            <Parameter Name="KandidatId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Termin_GetById" ReturnType="Collection(auto_skolaModel1.asp_Termin_GetById_Result)">
+            <Parameter Name="TerminId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Termin_GetByKandidatId" ReturnType="Collection(auto_skolaModel1.asp_Termin_GetByKandidatId_Result)">
+            <Parameter Name="KandidatId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Termin_SearchByName" ReturnType="Collection(auto_skolaModel1.asp_Termin_SearchByName_Result)">
+            <Parameter Name="ImePrezime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Termin_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Termin_SelectAll_Result)" />
+          <FunctionImport Name="asp_Test_DaLiPostojiTestSaPodkategorijom" ReturnType="Collection(auto_skolaModel1.asp_Test_DaLiPostojiTestSaPodkategorijom_Result)">
+            <Parameter Name="Naziv" Mode="In" Type="String" />
+            <Parameter Name="PodkategorijaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Test_GetById" ReturnType="Collection(auto_skolaModel1.asp_Test_GetById_Result)">
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Test_GetByIzborNaziv" ReturnType="Collection(auto_skolaModel1.asp_Test_GetByIzborNaziv_Result)">
+            <Parameter Name="Naziv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Test_GetTestByName" ReturnType="Collection(auto_skolaModel1.asp_Test_GetTestByName_Result)">
+            <Parameter Name="nazivTesta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Test_GetTestId" ReturnType="Collection(Int32)">
+            <Parameter Name="Naziv" Mode="In" Type="String" />
+            <Parameter Name="PodkategorijaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Test_NazivPodkategorija" ReturnType="Collection(auto_skolaModel1.asp_Test_NazivPodkategorija_Result)" />
+          <FunctionImport Name="asp_Test_Select_All" ReturnType="Collection(auto_skolaModel1.asp_Test_Select_All_Result)" />
+          <FunctionImport Name="asp_Testovi_GetRecommendedByKandidatId" ReturnType="Collection(auto_skolaModel1.asp_Testovi_GetRecommendedByKandidatId_Result)">
+            <Parameter Name="KandidatId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Testovi_GetTestoviByPodkategorijaID" ReturnType="Collection(auto_skolaModel1.asp_Testovi_GetTestoviByPodkategorijaID_Result)">
+            <Parameter Name="PodkategorijaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_TipPitanja_GetById" ReturnType="Collection(auto_skolaModel1.asp_TipPitanja_GetById_Result)">
+            <Parameter Name="TipPitanjaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_TipPitanja_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_TipPitanja_SelectAll_Result)" />
+          <FunctionImport Name="asp_Uloge_GetUlogeByKorisnikId" ReturnType="Collection(auto_skolaModel1.asp_Uloge_GetUlogeByKorisnikId_Result)">
+            <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Uloge_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Uloge_SelectAll_Result)" />
+          <FunctionImport Name="asp_Upisuje_GetById" ReturnType="Collection(auto_skolaModel1.asp_Upisuje_GetById_Result)">
+            <Parameter Name="UpisujeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Upisuje_SearchByName" ReturnType="Collection(auto_skolaModel1.asp_Upisuje_SearchByName_Result)">
+            <Parameter Name="ImePrezime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="asp_upisuje_SellectAll" ReturnType="Collection(auto_skolaModel1.asp_upisuje_SellectAll_Result)" />
+          <FunctionImport Name="asp_Uplata_GetById" ReturnType="Collection(auto_skolaModel1.asp_Uplata_GetById_Result)">
+            <Parameter Name="UplataId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Uplate_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Uplate_SelectAll_Result)" />
+          <FunctionImport Name="asp_Vozilo_GetById" ReturnType="Collection(auto_skolaModel1.asp_Vozilo_GetById_Result)">
+            <Parameter Name="VoziloId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="asp_Vozilo_SelectAll" ReturnType="Collection(auto_skolaModel1.asp_Vozilo_SelectAll_Result)" />
+        </EntityContainer>
+        <ComplexType Name="asp_Instruktori_SelectAll_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Izbor_GetIzborById_Result">
+          <Property Type="Int32" Name="IzborId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Izbor_SelectAll_Result">
+          <Property Type="Int32" Name="IzborId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Kandidati_GetById_Result">
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="DateTime" Name="DatumRegistracije" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="40" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="DatumRodjenja" Nullable="false" />
+          <Property Type="Int32" Name="SpolId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Kandidati_GetByUsername_Result">
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="DateTime" Name="DatumRegistracije" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DatumRodjenja" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="asp_Kandidati_SearchByName_Result">
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="String" Name="ImePrezime" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumRegistracije" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="BrojOdrzanihUplacenihCasova" Nullable="true" MaxLength="511" />
+          <Property Type="String" Name="Zadnje_uplaceno" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Kandidati_SelectAll_Result">
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="DatumRegistracije" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Spol" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Kandidati_SpojenoImePrezime_Result">
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="String" Name="ImePrezime" Nullable="false" MaxLength="81" />
+        </ComplexType>
+        <ComplexType Name="asp_Kategorija_GetById_Result">
+          <Property Type="Int32" Name="KategorijaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Kategorija_SelectAll_Result">
+          <Property Type="Int32" Name="KategorijaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_GetById_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="40" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="true" Precision="23" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_GetByUsername_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="40" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="DatumPrijave" Nullable="true" Precision="23" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_GetRecommendedInstruktori_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="Decimal" Name="Prosjek" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_GetSlicnePoKandidatu_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_SearchByName_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_SelectAll_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="20" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Korisnici_SpojenoImePrezime_Result">
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="String" Name="ImePrezime" Nullable="false" MaxLength="81" />
+        </ComplexType>
+        <ComplexType Name="asp_Odgovor_DaLiPostojiOdgovor_Result">
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+          <Property Type="String" Name="Odgovor" Nullable="false" />
+          <Property Type="Boolean" Name="IsTacan" Nullable="true" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Odgovor_GetById_Result">
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+          <Property Type="String" Name="Odgovor" Nullable="false" />
+          <Property Type="Boolean" Name="IsTacan" Nullable="true" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Odgovor_GetOdgovoriByPitanjeId_Result">
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+          <Property Type="String" Name="Odgovor1" Nullable="false" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="Boolean" Name="IsTacan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Odgovor_SelectAll_Result">
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+          <Property Type="String" Name="Odgovor" Nullable="false" />
+          <Property Type="Boolean" Name="IsTacan" Nullable="true" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_OznaceniOdgovori_GetById_Result">
+          <Property Type="Int32" Name="OznacenOdgovorId" Nullable="false" />
+          <Property Type="Int32" Name="PolazeId" Nullable="false" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId_Result">
+          <Property Type="Int32" Name="OznacenOdgovorId" Nullable="false" />
+          <Property Type="Int32" Name="PolazeId" Nullable="false" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_OznaceniOdgovori_SelectAll_Result">
+          <Property Type="Int32" Name="OznacenOdgovorId" Nullable="false" />
+          <Property Type="Int32" Name="PolazeId" Nullable="false" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="Int32" Name="OdgovorId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Pitanje_GetById_Result">
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="String" Name="Pitanje1" Nullable="false" />
+          <Property Type="Binary" Name="Slika" Nullable="true" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="Int32" Name="TipPitanjaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Pitanje_GetPitanjaByTestID_Result">
+          <Property Type="String" Name="Pitanje1" Nullable="false" />
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="Int32" Name="TipPitanjaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Pitanje_SelectAll_Result">
+          <Property Type="Int32" Name="PitanjeId" Nullable="false" />
+          <Property Type="String" Name="Pitanje1" Nullable="false" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="String" Name="Tip" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="43" />
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Podkategorija_GetById_Result">
+          <Property Type="Int32" Name="PodkategorijaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="KategorijaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Podkategorija_SelectAll_Result">
+          <Property Type="Int32" Name="PodkategorijaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="43" />
+        </ComplexType>
+        <ComplexType Name="asp_Podkategorije_GetByKategorijaId_Result">
+          <Property Type="Int32" Name="PodkategorijaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="KategorijaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Polaze_GetById_Result">
+          <Property Type="Int32" Name="PolazeId" Nullable="false" />
+          <Property Type="DateTime" Name="VrijemePocetka" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="VrijemeZavrsetka" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="RezultatId" Nullable="true" />
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Polaze_GetPolazeByKandidatId_Result">
+          <Property Type="Int32" Name="PolazeId" Nullable="false" />
+          <Property Type="DateTime" Name="VrijemePocetka" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="VrijemeZavrsetka" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="43" />
+          <Property Type="Double" Name="Rezultat1" Nullable="false" />
+          <Property Type="Int32" Name="brojTacnihOdgovora" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Polaze_SelectAll_Result">
+          <Property Type="Int32" Name="PolazeId" Nullable="false" />
+          <Property Type="DateTime" Name="VrijemePocetka" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="VrijemeZavrsetka" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="RezultatId" Nullable="true" />
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_provjera_nacina_placanja_Result">
+          <Property Type="String" Name="Nacin" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="UplataId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Provjera_Uplate_Result">
+          <Property Type="Double" Name="Cijena" Nullable="false" />
+          <Property Type="String" Name="Nacin" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_report_Result">
+          <Property Type="String" Name="Kandidat" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Podkategorija" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Test" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="Datum_polaganja" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Broj_tačnih_odgovora" Nullable="false" />
+          <Property Type="String" Name="Rezultat" Nullable="true" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="asp_Rezultat_GetRezultatiTestovaReport_Result">
+          <Property Type="String" Name="Kandidat" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Podkategorija" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Test" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="Datum_polaganja" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Broj_tačnih_odgovora" Nullable="false" />
+          <Property Type="String" Name="Rezultat" Nullable="true" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="asp_Spol_SelectAll_Result">
+          <Property Type="Int32" Name="SpolId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Termin_DaLiJeSlobodanTermin_Result">
+          <Property Type="Int32" Name="TerminId" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="Time" Name="Vrijeme" Nullable="false" />
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="Int32" Name="VoziloId" Nullable="false" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="Boolean" Name="IsOdrzan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Termin_GetById_Result">
+          <Property Type="Int32" Name="TerminId" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="Time" Name="Vrijeme" Nullable="false" />
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="Int32" Name="VoziloId" Nullable="false" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="Boolean" Name="IsOdrzan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Termin_GetByKandidatId_Result">
+          <Property Type="String" Name="TerminVoznje" Nullable="true" MaxLength="16" />
+          <Property Type="String" Name="Instruktor" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsOdrzan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Termin_SearchByName_Result">
+          <Property Type="Int32" Name="TerminId" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="String" Name="Vrijeme" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ImePrezimeKo" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="ImePrezimeKa" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Automobil" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="IsOdrzan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Termin_SelectAll_Result">
+          <Property Type="Int32" Name="TerminId" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="String" Name="Vrijeme" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ImePrezimeKo" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="ImePrezimeKa" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Automobil" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="IsOdrzan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Test_DaLiPostojiTestSaPodkategorijom_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="PodkategorijaId" Nullable="false" />
+          <Property Type="Boolean" Name="ParcijalnoBodovanje" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Test_GetById_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="PodkategorijaId" Nullable="false" />
+          <Property Type="Boolean" Name="ParcijalnoBodovanje" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Test_GetByIzborNaziv_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Test_GetTestByName_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="43" />
+          <Property Type="Boolean" Name="ParcijalnoBodovanje" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Test_NazivPodkategorija_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="46" />
+        </ComplexType>
+        <ComplexType Name="asp_Test_Select_All_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="43" />
+          <Property Type="Boolean" Name="ParcijalnoBodovanje" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Testovi_GetRecommendedByKandidatId_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" />
+          <Property Type="String" Name="Podkategorija" Nullable="false" />
+          <Property Type="Double" Name="Prosjek" Nullable="false" />
+          <Property Type="Int32" Name="RowNumber" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Testovi_GetTestoviByPodkategorijaID_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="PodkategorijaId" Nullable="false" />
+          <Property Type="Boolean" Name="ParcijalnoBodovanje" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_TipPitanja_GetById_Result">
+          <Property Type="Int32" Name="TipPitanjaId" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_TipPitanja_SelectAll_Result">
+          <Property Type="Int32" Name="TipPitanjaId" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Uloge_GetUlogeByKorisnikId_Result">
+          <Property Type="Int32" Name="UlogaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Opis" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="asp_Uloge_SelectAll_Result">
+          <Property Type="Int32" Name="UlogaId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Opis" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="asp_Upisuje_GetById_Result">
+          <Property Type="Int32" Name="UpisujeId" Nullable="false" />
+          <Property Type="DateTime" Name="DatumUpisa" Nullable="false" />
+          <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+          <Property Type="Int32" Name="UplataId" Nullable="true" />
+          <Property Type="Int32" Name="KandidatId" Nullable="false" />
+          <Property Type="Int32" Name="BrojUplacenihCasova" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Upisuje_SearchByName_Result">
+          <Property Type="Int32" Name="UpisujeId" Nullable="false" />
+          <Property Type="String" Name="ImePrezimeKo" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="ImePrezimeKa" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Uplata" Nullable="true" MaxLength="53" />
+          <Property Type="Int32" Name="brUplCasova" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_upisuje_SellectAll_Result">
+          <Property Type="Int32" Name="UpisujeId" Nullable="false" />
+          <Property Type="String" Name="ImePrezimeKo" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="ImePrezimeKa" Nullable="false" MaxLength="81" />
+          <Property Type="String" Name="Uplata" Nullable="true" MaxLength="53" />
+          <Property Type="Int32" Name="brUplCasova" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="asp_Uplata_GetById_Result">
+          <Property Type="Int32" Name="UplataId" Nullable="false" />
+          <Property Type="Double" Name="Cijena" Nullable="false" />
+          <Property Type="Int32" Name="NacinPlacanjaId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="asp_Uplate_SelectAll_Result">
+          <Property Type="Int32" Name="UplataId" Nullable="false" />
+          <Property Type="String" Name="Uplata" Nullable="true" MaxLength="56" />
+        </ComplexType>
+        <ComplexType Name="asp_Vozilo_GetById_Result">
+          <Property Type="Int32" Name="VoziloId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="asp_Vozilo_SelectAll_Result">
+          <Property Type="Int32" Name="VoziloId" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="auto_skolaModel1StoreContainer" CdmEntityContainer="auto_skolaEntities1">
+          <EntitySetMapping Name="Izbor">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Izbor">
+              <MappingFragment StoreEntitySet="Izbor">
+                <ScalarProperty Name="IzborId" ColumnName="IzborId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kandidati">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Kandidati">
+              <MappingFragment StoreEntitySet="Kandidati">
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="SpolId" ColumnName="SpolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorija">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Kategorija">
+              <MappingFragment StoreEntitySet="Kategorija">
+                <ScalarProperty Name="KategorijaId" ColumnName="KategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisnici">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Korisnici">
+              <MappingFragment StoreEntitySet="Korisnici">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KorisniciUloge">
+            <EntityTypeMapping TypeName="auto_skolaModel1.KorisniciUloge">
+              <MappingFragment StoreEntitySet="KorisniciUloge">
+                <ScalarProperty Name="KorisniciUlogeId" ColumnName="KorisniciUlogeId" />
+                <ScalarProperty Name="DatumIzmjene" ColumnName="DatumIzmjene" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="UlogaId" ColumnName="UlogaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NacinPlacanja">
+            <EntityTypeMapping TypeName="auto_skolaModel1.NacinPlacanja">
+              <MappingFragment StoreEntitySet="NacinPlacanja">
+                <ScalarProperty Name="NacinPlacanjaId" ColumnName="NacinPlacanjaId" />
+                <ScalarProperty Name="Nacin" ColumnName="Nacin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocjene">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Ocjene">
+              <MappingFragment StoreEntitySet="Ocjene">
+                <ScalarProperty Name="OcjenaId" ColumnName="OcjenaId" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odgovor">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Odgovor">
+              <MappingFragment StoreEntitySet="Odgovor">
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+                <ScalarProperty Name="Odgovor1" ColumnName="Odgovor" />
+                <ScalarProperty Name="IsTacan" ColumnName="IsTacan" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OznaceniOdgovori">
+            <EntityTypeMapping TypeName="auto_skolaModel1.OznaceniOdgovori">
+              <MappingFragment StoreEntitySet="OznaceniOdgovori">
+                <ScalarProperty Name="OznacenOdgovorId" ColumnName="OznacenOdgovorId" />
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pitanje">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Pitanje">
+              <MappingFragment StoreEntitySet="Pitanje">
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="Pitanje1" ColumnName="Pitanje" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="TipPitanjaId" ColumnName="TipPitanjaId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podkategorija">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Podkategorija">
+              <MappingFragment StoreEntitySet="Podkategorija">
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="KategorijaId" ColumnName="KategorijaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polaze">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Polaze">
+              <MappingFragment StoreEntitySet="Polaze">
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="VrijemePocetka" ColumnName="VrijemePocetka" />
+                <ScalarProperty Name="VrijemeZavrsetka" ColumnName="VrijemeZavrsetka" />
+                <ScalarProperty Name="RezultatId" ColumnName="RezultatId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezultat">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Rezultat">
+              <MappingFragment StoreEntitySet="Rezultat">
+                <ScalarProperty Name="RezultatId" ColumnName="RezultatId" />
+                <ScalarProperty Name="BrojacTacnihOdgovora" ColumnName="BrojacTacnihOdgovora" />
+                <ScalarProperty Name="Rezultat1" ColumnName="Rezultat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spol">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Spol">
+              <MappingFragment StoreEntitySet="Spol">
+                <ScalarProperty Name="SpolId" ColumnName="SpolId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="auto_skolaModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Termin">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Termin">
+              <MappingFragment StoreEntitySet="Termin">
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="IsOdrzan" ColumnName="IsOdrzan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="ParcijalnoBodovanje" ColumnName="ParcijalnoBodovanje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipPitanja">
+            <EntityTypeMapping TypeName="auto_skolaModel1.TipPitanja">
+              <MappingFragment StoreEntitySet="TipPitanja">
+                <ScalarProperty Name="TipPitanjaId" ColumnName="TipPitanjaId" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uloge">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Uloge">
+              <MappingFragment StoreEntitySet="Uloge">
+                <ScalarProperty Name="UlogaId" ColumnName="UlogaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Upisuje">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Upisuje">
+              <MappingFragment StoreEntitySet="Upisuje">
+                <ScalarProperty Name="UpisujeId" ColumnName="UpisujeId" />
+                <ScalarProperty Name="DatumUpisa" ColumnName="DatumUpisa" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="UplataId" ColumnName="UplataId" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="BrojUplacenihCasova" ColumnName="BrojUplacenihCasova" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uplata">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Uplata">
+              <MappingFragment StoreEntitySet="Uplata">
+                <ScalarProperty Name="UplataId" ColumnName="UplataId" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="NacinPlacanjaId" ColumnName="NacinPlacanjaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vozilo">
+            <EntityTypeMapping TypeName="auto_skolaModel1.Vozilo">
+              <MappingFragment StoreEntitySet="Vozilo">
+                <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="asp_Instruktori_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Instruktori_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Instruktori_SelectAll_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Izbor_GetIzborById" FunctionName="auto_skolaModel1.Store.asp_Izbor_GetIzborById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Izbor_GetIzborById_Result">
+                <ScalarProperty Name="IzborId" ColumnName="IzborId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Izbor_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Izbor_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Izbor_SelectAll_Result">
+                <ScalarProperty Name="IzborId" ColumnName="IzborId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kandidati_GetBrojNovihKandidata" FunctionName="auto_skolaModel1.Store.asp_Kandidati_GetBrojNovihKandidata" />
+          <FunctionImportMapping FunctionImportName="asp_Kandidati_GetById" FunctionName="auto_skolaModel1.Store.asp_Kandidati_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kandidati_GetById_Result">
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="SpolId" ColumnName="SpolId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kandidati_GetByUsername" FunctionName="auto_skolaModel1.Store.asp_Kandidati_GetByUsername">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kandidati_GetByUsername_Result">
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kandidati_SearchByName" FunctionName="auto_skolaModel1.Store.asp_Kandidati_SearchByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kandidati_SearchByName_Result">
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BrojOdrzanihUplacenihCasova" ColumnName="BrojOdrzanihUplacenihCasova" />
+                <ScalarProperty Name="Zadnje_uplaceno" ColumnName="Zadnje uplaceno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kandidati_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Kandidati_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kandidati_SelectAll_Result">
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kandidati_SpojenoImePrezime" FunctionName="auto_skolaModel1.Store.asp_Kandidati_SpojenoImePrezime">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kandidati_SpojenoImePrezime_Result">
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kategorija_GetById" FunctionName="auto_skolaModel1.Store.asp_Kategorija_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kategorija_GetById_Result">
+                <ScalarProperty Name="KategorijaId" ColumnName="KategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Kategorija_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Kategorija_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Kategorija_SelectAll_Result">
+                <ScalarProperty Name="KategorijaId" ColumnName="KategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_GetById" FunctionName="auto_skolaModel1.Store.asp_Korisnici_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_GetById_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_GetByUsername" FunctionName="auto_skolaModel1.Store.asp_Korisnici_GetByUsername">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_GetByUsername_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DatumPrijave" ColumnName="DatumPrijave" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_GetRecommendedInstruktori" FunctionName="auto_skolaModel1.Store.asp_Korisnici_GetRecommendedInstruktori">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_GetRecommendedInstruktori_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Prosjek" ColumnName="Prosjek" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_GetSlicnePoKandidatu" FunctionName="auto_skolaModel1.Store.asp_Korisnici_GetSlicnePoKandidatu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_GetSlicnePoKandidatu_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_SearchByName" FunctionName="auto_skolaModel1.Store.asp_Korisnici_SearchByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_SearchByName_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Korisnici_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_SelectAll_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Korisnici_SpojenoImePrezime" FunctionName="auto_skolaModel1.Store.asp_Korisnici_SpojenoImePrezime">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Korisnici_SpojenoImePrezime_Result">
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Ocjene_DaLiPostojiOcjena" FunctionName="auto_skolaModel1.Store.asp_Ocjene_DaLiPostojiOcjena" />
+          <FunctionImportMapping FunctionImportName="asp_Ocjene_GetRejtingByKorisnikId" FunctionName="auto_skolaModel1.Store.asp_Ocjene_GetRejtingByKorisnikId" />
+          <FunctionImportMapping FunctionImportName="asp_Odgovor_DaLiPostojiOdgovor" FunctionName="auto_skolaModel1.Store.asp_Odgovor_DaLiPostojiOdgovor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Odgovor_DaLiPostojiOdgovor_Result">
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+                <ScalarProperty Name="Odgovor" ColumnName="Odgovor" />
+                <ScalarProperty Name="IsTacan" ColumnName="IsTacan" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Odgovor_GetById" FunctionName="auto_skolaModel1.Store.asp_Odgovor_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Odgovor_GetById_Result">
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+                <ScalarProperty Name="Odgovor" ColumnName="Odgovor" />
+                <ScalarProperty Name="IsTacan" ColumnName="IsTacan" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Odgovor_GetOdgovoriByPitanjeId" FunctionName="auto_skolaModel1.Store.asp_Odgovor_GetOdgovoriByPitanjeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Odgovor_GetOdgovoriByPitanjeId_Result">
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+                <ScalarProperty Name="Odgovor1" ColumnName="Odgovor1" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="IsTacan" ColumnName="IsTacan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Odgovor_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Odgovor_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Odgovor_SelectAll_Result">
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+                <ScalarProperty Name="Odgovor" ColumnName="Odgovor" />
+                <ScalarProperty Name="IsTacan" ColumnName="IsTacan" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_OznaceniOdgovori_GetById" FunctionName="auto_skolaModel1.Store.asp_OznaceniOdgovori_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_OznaceniOdgovori_GetById_Result">
+                <ScalarProperty Name="OznacenOdgovorId" ColumnName="OznacenOdgovorId" />
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId" FunctionName="auto_skolaModel1.Store.asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_OznaceniOdgovori_GetOznaceniOdgovoriByPitanjeId_Result">
+                <ScalarProperty Name="OznacenOdgovorId" ColumnName="OznacenOdgovorId" />
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_OznaceniOdgovori_SelectAll" FunctionName="auto_skolaModel1.Store.asp_OznaceniOdgovori_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_OznaceniOdgovori_SelectAll_Result">
+                <ScalarProperty Name="OznacenOdgovorId" ColumnName="OznacenOdgovorId" />
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="OdgovorId" ColumnName="OdgovorId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Pitanje_GetBrojPitanjaPoTestu" FunctionName="auto_skolaModel1.Store.asp_Pitanje_GetBrojPitanjaPoTestu" />
+          <FunctionImportMapping FunctionImportName="asp_Pitanje_GetById" FunctionName="auto_skolaModel1.Store.asp_Pitanje_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Pitanje_GetById_Result">
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="Pitanje1" ColumnName="Pitanje1" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="TipPitanjaId" ColumnName="TipPitanjaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Pitanje_GetPitanjaByTestID" FunctionName="auto_skolaModel1.Store.asp_Pitanje_GetPitanjaByTestID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Pitanje_GetPitanjaByTestID_Result">
+                <ScalarProperty Name="Pitanje1" ColumnName="Pitanje1" />
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="TipPitanjaId" ColumnName="TipPitanjaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Pitanje_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Pitanje_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Pitanje_SelectAll_Result">
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="Pitanje1" ColumnName="Pitanje1" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Podkategorija_GetById" FunctionName="auto_skolaModel1.Store.asp_Podkategorija_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Podkategorija_GetById_Result">
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="KategorijaId" ColumnName="KategorijaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Podkategorija_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Podkategorija_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Podkategorija_SelectAll_Result">
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Podkategorije_GetByKategorijaId" FunctionName="auto_skolaModel1.Store.asp_Podkategorije_GetByKategorijaId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Podkategorije_GetByKategorijaId_Result">
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="KategorijaId" ColumnName="KategorijaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Polaze_GetById" FunctionName="auto_skolaModel1.Store.asp_Polaze_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Polaze_GetById_Result">
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="VrijemePocetka" ColumnName="VrijemePocetka" />
+                <ScalarProperty Name="VrijemeZavrsetka" ColumnName="VrijemeZavrsetka" />
+                <ScalarProperty Name="RezultatId" ColumnName="RezultatId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Polaze_GetPolazeByKandidatId" FunctionName="auto_skolaModel1.Store.asp_Polaze_GetPolazeByKandidatId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Polaze_GetPolazeByKandidatId_Result">
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="VrijemePocetka" ColumnName="VrijemePocetka" />
+                <ScalarProperty Name="VrijemeZavrsetka" ColumnName="VrijemeZavrsetka" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Rezultat1" ColumnName="Rezultat1" />
+                <ScalarProperty Name="brojTacnihOdgovora" ColumnName="brojTacnihOdgovora" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Polaze_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Polaze_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Polaze_SelectAll_Result">
+                <ScalarProperty Name="PolazeId" ColumnName="PolazeId" />
+                <ScalarProperty Name="VrijemePocetka" ColumnName="VrijemePocetka" />
+                <ScalarProperty Name="VrijemeZavrsetka" ColumnName="VrijemeZavrsetka" />
+                <ScalarProperty Name="RezultatId" ColumnName="RezultatId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_provjera_nacina_placanja" FunctionName="auto_skolaModel1.Store.asp_provjera_nacina_placanja">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_provjera_nacina_placanja_Result">
+                <ScalarProperty Name="Nacin" ColumnName="Nacin" />
+                <ScalarProperty Name="UplataId" ColumnName="UplataId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Provjera_Uplate" FunctionName="auto_skolaModel1.Store.asp_Provjera_Uplate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Provjera_Uplate_Result">
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Nacin" ColumnName="Nacin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_report" FunctionName="auto_skolaModel1.Store.asp_report">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_report_Result">
+                <ScalarProperty Name="Kandidat" ColumnName="Kandidat" />
+                <ScalarProperty Name="Podkategorija" ColumnName="Podkategorija" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+                <ScalarProperty Name="Datum_polaganja" ColumnName="Datum polaganja" />
+                <ScalarProperty Name="Broj_tačnih_odgovora" ColumnName="Broj tačnih odgovora" />
+                <ScalarProperty Name="Rezultat" ColumnName="Rezultat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Rezultat_GetRezultatiTestovaReport" FunctionName="auto_skolaModel1.Store.asp_Rezultat_GetRezultatiTestovaReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Rezultat_GetRezultatiTestovaReport_Result">
+                <ScalarProperty Name="Kandidat" ColumnName="Kandidat" />
+                <ScalarProperty Name="Podkategorija" ColumnName="Podkategorija" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+                <ScalarProperty Name="Datum_polaganja" ColumnName="Datum polaganja" />
+                <ScalarProperty Name="Broj_tačnih_odgovora" ColumnName="Broj tačnih odgovora" />
+                <ScalarProperty Name="Rezultat" ColumnName="Rezultat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Spol_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Spol_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Spol_SelectAll_Result">
+                <ScalarProperty Name="SpolId" ColumnName="SpolId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Termin_DaLiJeSlobodanTermin" FunctionName="auto_skolaModel1.Store.asp_Termin_DaLiJeSlobodanTermin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Termin_DaLiJeSlobodanTermin_Result">
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="IsOdrzan" ColumnName="IsOdrzan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Termin_GetById" FunctionName="auto_skolaModel1.Store.asp_Termin_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Termin_GetById_Result">
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="IsOdrzan" ColumnName="IsOdrzan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Termin_GetByKandidatId" FunctionName="auto_skolaModel1.Store.asp_Termin_GetByKandidatId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Termin_GetByKandidatId_Result">
+                <ScalarProperty Name="TerminVoznje" ColumnName="TerminVoznje" />
+                <ScalarProperty Name="Instruktor" ColumnName="Instruktor" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="IsOdrzan" ColumnName="IsOdrzan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Termin_SearchByName" FunctionName="auto_skolaModel1.Store.asp_Termin_SearchByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Termin_SearchByName_Result">
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="ImePrezimeKo" ColumnName="ImePrezimeKo" />
+                <ScalarProperty Name="ImePrezimeKa" ColumnName="ImePrezimeKa" />
+                <ScalarProperty Name="Automobil" ColumnName="Automobil" />
+                <ScalarProperty Name="IsOdrzan" ColumnName="IsOdrzan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Termin_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Termin_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Termin_SelectAll_Result">
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="ImePrezimeKo" ColumnName="ImePrezimeKo" />
+                <ScalarProperty Name="ImePrezimeKa" ColumnName="ImePrezimeKa" />
+                <ScalarProperty Name="Automobil" ColumnName="Automobil" />
+                <ScalarProperty Name="IsOdrzan" ColumnName="IsOdrzan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Test_DaLiPostojiTestSaPodkategorijom" FunctionName="auto_skolaModel1.Store.asp_Test_DaLiPostojiTestSaPodkategorijom">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Test_DaLiPostojiTestSaPodkategorijom_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="ParcijalnoBodovanje" ColumnName="ParcijalnoBodovanje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Test_GetById" FunctionName="auto_skolaModel1.Store.asp_Test_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Test_GetById_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="ParcijalnoBodovanje" ColumnName="ParcijalnoBodovanje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Test_GetByIzborNaziv" FunctionName="auto_skolaModel1.Store.asp_Test_GetByIzborNaziv">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Test_GetByIzborNaziv_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Test_GetTestByName" FunctionName="auto_skolaModel1.Store.asp_Test_GetTestByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Test_GetTestByName_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="ParcijalnoBodovanje" ColumnName="ParcijalnoBodovanje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Test_GetTestId" FunctionName="auto_skolaModel1.Store.asp_Test_GetTestId" />
+          <FunctionImportMapping FunctionImportName="asp_Test_NazivPodkategorija" FunctionName="auto_skolaModel1.Store.asp_Test_NazivPodkategorija">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Test_NazivPodkategorija_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Test_Select_All" FunctionName="auto_skolaModel1.Store.asp_Test_Select_All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Test_Select_All_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="ParcijalnoBodovanje" ColumnName="ParcijalnoBodovanje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Testovi_GetRecommendedByKandidatId" FunctionName="auto_skolaModel1.Store.asp_Testovi_GetRecommendedByKandidatId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Testovi_GetRecommendedByKandidatId_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Podkategorija" ColumnName="Podkategorija" />
+                <ScalarProperty Name="Prosjek" ColumnName="Prosjek" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Testovi_GetTestoviByPodkategorijaID" FunctionName="auto_skolaModel1.Store.asp_Testovi_GetTestoviByPodkategorijaID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Testovi_GetTestoviByPodkategorijaID_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="PodkategorijaId" ColumnName="PodkategorijaId" />
+                <ScalarProperty Name="ParcijalnoBodovanje" ColumnName="ParcijalnoBodovanje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_TipPitanja_GetById" FunctionName="auto_skolaModel1.Store.asp_TipPitanja_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_TipPitanja_GetById_Result">
+                <ScalarProperty Name="TipPitanjaId" ColumnName="TipPitanjaId" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_TipPitanja_SelectAll" FunctionName="auto_skolaModel1.Store.asp_TipPitanja_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_TipPitanja_SelectAll_Result">
+                <ScalarProperty Name="TipPitanjaId" ColumnName="TipPitanjaId" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Uloge_GetUlogeByKorisnikId" FunctionName="auto_skolaModel1.Store.asp_Uloge_GetUlogeByKorisnikId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Uloge_GetUlogeByKorisnikId_Result">
+                <ScalarProperty Name="UlogaId" ColumnName="UlogaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Uloge_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Uloge_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Uloge_SelectAll_Result">
+                <ScalarProperty Name="UlogaId" ColumnName="UlogaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Upisuje_GetById" FunctionName="auto_skolaModel1.Store.asp_Upisuje_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Upisuje_GetById_Result">
+                <ScalarProperty Name="UpisujeId" ColumnName="UpisujeId" />
+                <ScalarProperty Name="DatumUpisa" ColumnName="DatumUpisa" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="UplataId" ColumnName="UplataId" />
+                <ScalarProperty Name="KandidatId" ColumnName="KandidatId" />
+                <ScalarProperty Name="BrojUplacenihCasova" ColumnName="BrojUplacenihCasova" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Upisuje_SearchByName" FunctionName="auto_skolaModel1.Store.asp_Upisuje_SearchByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Upisuje_SearchByName_Result">
+                <ScalarProperty Name="UpisujeId" ColumnName="UpisujeId" />
+                <ScalarProperty Name="ImePrezimeKo" ColumnName="ImePrezimeKo" />
+                <ScalarProperty Name="ImePrezimeKa" ColumnName="ImePrezimeKa" />
+                <ScalarProperty Name="Uplata" ColumnName="Uplata" />
+                <ScalarProperty Name="brUplCasova" ColumnName="brUplCasova" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_upisuje_SellectAll" FunctionName="auto_skolaModel1.Store.asp_upisuje_SellectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_upisuje_SellectAll_Result">
+                <ScalarProperty Name="UpisujeId" ColumnName="UpisujeId" />
+                <ScalarProperty Name="ImePrezimeKo" ColumnName="ImePrezimeKo" />
+                <ScalarProperty Name="ImePrezimeKa" ColumnName="ImePrezimeKa" />
+                <ScalarProperty Name="Uplata" ColumnName="Uplata" />
+                <ScalarProperty Name="brUplCasova" ColumnName="brUplCasova" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Uplata_GetById" FunctionName="auto_skolaModel1.Store.asp_Uplata_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Uplata_GetById_Result">
+                <ScalarProperty Name="UplataId" ColumnName="UplataId" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="NacinPlacanjaId" ColumnName="NacinPlacanjaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Uplate_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Uplate_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Uplate_SelectAll_Result">
+                <ScalarProperty Name="UplataId" ColumnName="UplataId" />
+                <ScalarProperty Name="Uplata" ColumnName="Uplata" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Vozilo_GetById" FunctionName="auto_skolaModel1.Store.asp_Vozilo_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Vozilo_GetById_Result">
+                <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Vozilo_SelectAll" FunctionName="auto_skolaModel1.Store.asp_Vozilo_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="auto_skolaModel1.asp_Vozilo_SelectAll_Result">
+                <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

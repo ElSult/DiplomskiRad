@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:auto_skolaSolution.Converters"
+             x:Class="auto_skolaSolution.Testovi.PrikaziPitanje" Title="Test">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label x:Name="PitanjeTekst" FontAttributes="Bold"  ></Label>
+            <Image x:Name="Slika" WidthRequest="100" HeightRequest="100" Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+            <ListView x:Name="odgovoriList" ItemSelected="OdgovoriList_ItemSelected"  >
+                <ListView.RowHeight>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <On Platform="Android">55</On>
+                    </OnPlatform>
+                </ListView.RowHeight>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid >
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto"  ></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" >
+                                <input:CheckBox x:Name="Odgovor" TextFontSize="10" Text="{Binding Odgovor1}" IsChecked="{Binding Oznacen}" Type="Check" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<input:RadioButtonGroupView x:Name="RadioButtons">
+            </input:RadioButtonGroupView>-->
+
+            <!--<ListView x:Name="odgovoriList_Radio" IsVisible="true"  ItemSelected="OdgovoriList_ItemSelected">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid >
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto"  ></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" Padding="10">
+                                    <input:RadioButton x:Name="Odgovor" Text="{Binding Odgovor1}"  IsChecked="{Binding Oznacen}"  />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView--> 
+            
+                <!--<Grid >
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="Auto"  ></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>-->
+                    <!--<StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" TranslationY="-50" HorizontalOptions="FillAndExpand">-->
+        
+                <Button x:Name="DaljeButton" Text="Dalje"  Grid.Column="0" Clicked="DaljeButton_Clicked"></Button>
+                <Button x:Name="NazadButton" Text="Nazad" IsEnabled="False"  Grid.Column="1" Clicked="NazadButton_Clicked"></Button>
+             
+            <!--</StackLayout>
+                <StackLayout Orientation="Vertical" TranslationY="-50" HorizontalOptions="FillAndExpand">-->
+                <!--</StackLayout>
+            </StackLayout>-->
+
+
+            <!--Grid.Row="0"-->
+
+            <!--</Grid>-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

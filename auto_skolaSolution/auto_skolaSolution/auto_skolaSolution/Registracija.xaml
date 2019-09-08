@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="auto_skolaSolution.Registracija">
+    <StackLayout VerticalOptions="CenterAndExpand" Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+        
+        <Label Text="Registracija @ auto_skola" FontSize="25" 
+               HorizontalTextAlignment="Center" Grid.ColumnSpan="2"></Label>
+        <Label Text="Ime" FontSize="18" VerticalTextAlignment="Center" Grid.Row="1"></Label>
+        <Entry x:Name="imeInput" Grid.Row="1" Grid.Column="1"></Entry>
+        <Label Text="Prezime" FontSize="18" VerticalTextAlignment="Center" Grid.Row="2"></Label>
+        <Entry x:Name="prezimeInput" Grid.Row="2" Grid.Column="1"></Entry>
+            
+            <Label Text="Datum rodjenja" FontSize="18" VerticalTextAlignment="Center" Grid.Row="3"></Label>
+            <DatePicker x:Name="datumRodjenja" Grid.Row="3" Grid.Column="1"></DatePicker>
+            
+            
+            <Label Text="Telefon" FontSize="18" VerticalTextAlignment="Center" Grid.Row="4"></Label>
+         <Entry x:Name="telefonInput"  Grid.Row="4" Grid.Column="1" PlaceholderColor="Red"></Entry>
+         <Label Text="Email" FontSize="18" VerticalTextAlignment="Center" Grid.Row="5"></Label>
+         <Entry x:Name="emailInput" Grid.Row="5" Grid.Column="1"></Entry>
+         <Label Text="Spol" FontSize="18" VerticalTextAlignment="Center" Grid.Row="6"></Label>
+            <Picker x:Name="spolList" Grid.Row="6" Grid.Column="1" SelectedIndexChanged="SpolList_SelectedIndexChanged"></Picker>
+            <Label Text="Korisničko ime" FontSize="18" VerticalTextAlignment="Center" Grid.Row="7"></Label>
+         <Entry x:Name="korisnickoImeInput" Grid.Row="7" Grid.Column="1"></Entry>
+         <Label Text="Lozinka" FontSize="18" VerticalTextAlignment="Center" Grid.Row="8"></Label>
+         <Entry x:Name="lozinkaInput" Grid.Row="8" Grid.Column="1" IsPassword="True"></Entry>
+
+            <Button x:Name="RegistracijaButton" Text="Registracija" Grid.Row="9" Grid.Column="1" Clicked="RegistracijaButton_Clicked"></Button>
+            <Button x:Name="NazadButton" Text="Nazad" Grid.Row="10" Grid.Column="1" Clicked="NazadButton_Clicked"></Button>
+
+        </Grid>
+        <!--https://www.c-sharpcorner.com/article/how-to-mask-phone-number-like-xxx-xxx-xxxx-in-xamarin-forms-using-behaviors/-->
+    </StackLayout>
+</ContentPage>

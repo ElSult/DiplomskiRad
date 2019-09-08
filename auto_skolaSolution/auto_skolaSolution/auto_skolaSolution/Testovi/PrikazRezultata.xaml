@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:auto_skolaSolution.Converters"
+             x:Class="auto_skolaSolution.Testovi.PrikazRezultata" Title="Rezultat testa">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label x:Name="PitanjeTekst" FontAttributes="Bold"  ></Label>
+            <Image x:Name="Slika" Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+
+            <Grid >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="Auto"  ></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="Auto"  ></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto" ></RowDefinition>
+                    <RowDefinition Height="Auto" ></RowDefinition>
+                    <RowDefinition Height="Auto" ></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <ListView x:Name="odgovoriList">
+                <ListView.RowHeight>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <On Platform="Android">55</On>
+                    </OnPlatform>
+                </ListView.RowHeight>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid >
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" >
+                                    <Label x:Name="IsTacan" Text="✓" TextColor="Green" FontAttributes="Bold" IsVisible="{Binding IsTacan}"   />
+                                    <Label x:Name="IsNetacan" Text="✕" TextColor="Red" FontAttributes="Bold" IsVisible="{Binding IsNetacan}"   />
+                                    <Label x:Name="IsNeoznacenTacan" Text="➢" TextColor="Blue" FontAttributes="Bold" IsVisible="{Binding IsNeoznacenTacan}"   />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" >
+                                    <Label x:Name="Odgovor" Text="{Binding Odgovor1}"   />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="DaljeButton" Text="Dalje"  Grid.Column="0"  Clicked="DaljeButton_Clicked"></Button>
+            <Button x:Name="NazadButton" Text="Nazad" IsEnabled="False"  Grid.Column="1" Clicked="NazadButton_Clicked"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

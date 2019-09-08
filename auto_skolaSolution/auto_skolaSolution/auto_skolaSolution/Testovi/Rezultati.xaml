@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:auto_skolaSolution.Converters"
+             x:Class="auto_skolaSolution.Testovi.Rezultati" Title="Rezultati">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+
+            <Label Text="Osvojeni procenat:"
+          VerticalOptions="Center"
+          HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="Procenat" Text="" FontSize="Large"
+          VerticalOptions="Center"
+          HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="Nazad"  Text="Nazad" Clicked="Nazad_Clicked" ></Button>
+
+            <Label x:Name="preporuceniInstruktori" FontSize="Large"
+          VerticalOptions="Center"
+          HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="recommenderList">
+              <ListView.RowHeight>
+                <OnPlatform x:TypeArguments="x:Int32">
+                  <On Platform="Android">90</On>
+                </OnPlatform>
+              </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+
+                                <Image x:Name="Slika" Grid.Column="0" WidthRequest="100" HeightRequest="100" Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+
+                                <StackLayout Grid.Column="1" Padding="10">
+                                    <Label Text="{Binding ImePrezime}"></Label>
+                                    <Label Text="{Binding Email}"  ></Label>
+                                    <Label Text="{Binding Telefon}"  ></Label>
+                                    <Label Text="{Binding ProsjekS}" FontAttributes="Bold" ></Label>
+                                </StackLayout>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

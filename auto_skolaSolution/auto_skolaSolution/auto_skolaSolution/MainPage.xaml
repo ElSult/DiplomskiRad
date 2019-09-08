@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:auto_skolaSolution.Converters"
+             x:Class="auto_skolaSolution.MainPage" Title="Main page">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Start" Margin="10">
+            <ListView x:Name="izborList" ItemTapped="IzborList_ItemTapped">
+                <ListView.RowHeight>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <On Platform="Android">70</On>
+                    </OnPlatform>
+                </ListView.RowHeight>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Orientation="Vertical">
+                                    <Image x:Name="image" WidthRequest="100" Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center">
+                                    <Label Text="{Binding Naziv}"  FontAttributes="Bold"></Label>
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>

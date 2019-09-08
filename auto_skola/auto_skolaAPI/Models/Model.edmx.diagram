@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d63f3dcb64014c2793c483a8d9857b39" Name="Diagram1">
+        <EntityTypeShape EntityType="auto_skolaModel.Izbor" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Kandidati" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Kategorija" Width="1.5" PointX="1.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Korisnici" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.KorisniciUloge" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.NacinPlacanja" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Ocjene" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Odgovor" Width="1.5" PointX="8.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.OznaceniOdgovori" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Pitanje" Width="1.5" PointX="6" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Podkategorija" Width="1.5" PointX="3.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Polaze" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Rezultat" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Spol" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Termin" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Test" Width="1.5" PointX="6" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.TipPitanja" Width="1.5" PointX="3.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Uloge" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Upisuje" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Uplata" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="auto_skolaModel.Vozilo" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <AssociationConnector Association="auto_skolaModel.FK__Ocjene__Kandidat__36470DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Polaze_Kandidati" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Spol" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Termin_Kandidati" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Upisuje_Kandidati" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Kategorija" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK__Ocjene__Korisnik__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_KorisniciUloge_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Termin_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Upis_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_KorisniciUloge_Uloge" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Uplata_NacinPlacanja" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Odgovor_Pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_OznaceniOdgovori_Odgovor" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_OznaceniOdgovori_Pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_OznaceniOdgovori_Polaze" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Pitanje_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Pitanje_TipPitanja" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Podkategorija" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Polaze_Rezultat" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Polaze_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Termin_Vozilo" ManuallyRouted="false" />
+        <AssociationConnector Association="auto_skolaModel.FK_Upis_Uplata" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="auto_skolaModel.StrucnaSprema" Width="1.5" PointX="0.75" PointY="11.625" />
+        <EntityTypeShape EntityType="auto_skolaModel.TipIspita" Width="1.5" PointX="6" PointY="27.75" />
+        <EntityTypeShape EntityType="auto_skolaModel.VozackiIspit" Width="1.5" PointX="8.25" PointY="12.375" />
+        <AssociationConnector Association="auto_skolaModel.FK__VozackiIs__Kandi__23F3538A" />
+        <AssociationConnector Association="auto_skolaModel.FK_Kandidati_StrucnaSprema_StrucnaSpremaId" />
+        <AssociationConnector Association="auto_skolaModel.FK__VozackiIs__TipIs__25DB9BFC" />
+        <AssociationConnector Association="auto_skolaModel.FK__Izbor__KorisnikI__45544755" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:auto_skolaSolution.Converters"
+             x:Class="auto_skolaSolution.Rate.RateInstruktor" Title="RateInstruktor">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Start" Margin="10">
+            <Label Text="Ocijeni instruktora" FontSize="Large"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="instruktorList" ItemTapped="InstruktorList_ItemTapped">
+                <ListView.RowHeight>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <On Platform="Android">55</On>
+                    </OnPlatform>
+                </ListView.RowHeight>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Orientation="Vertical">
+                                    <Image x:Name="Slika" Grid.Column="0" WidthRequest="100" Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center">
+                                    <Label Text="{Binding ImePrezime}" ></Label>
+                                    <Label Text="{Binding Email}"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
